@@ -1,0 +1,16 @@
+[package]
+name = "slip44"
+version = "0.1.0"
+edition = "2018"
+
+[dependencies]
+itertools = { version = "0.10.1", optional = true }
+reqwest = { version = "0.11.4", features = ["blocking"], optional = true }
+
+[features]
+parse-coins = ["itertools", "reqwest"]
+
+[[bin]]
+name = "parse-coins"
+path = "src/bin/parse_coins.rs"
+required-features = ["parse-coins"]
