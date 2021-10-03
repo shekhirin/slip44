@@ -11,6 +11,7 @@ homepage = "https://docs.rs/slip44"
 description = """
 Mapping between SLIP-0044 coin types and the associated metadata.
 """
+keywords = ["web3", "cryptocurrency"]
 
 [dependencies]
 itertools = { version = "0.10.1", optional = true }
