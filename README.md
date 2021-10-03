@@ -9,7 +9,7 @@ associated metadata**
 Add the following dependency to your Cargo manifest...
 ```toml
 [dependencies]
-slip44 = "0.1.2"
+slip44 = "0.1.3"
 ```
 ...and see the [docs](https://docs.rs/slip44) or [What can I do?](#what-can-i-do) section below for how to use it.
 
