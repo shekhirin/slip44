@@ -19,7 +19,7 @@ slip44 = "0.1.2"
 use std::{convert::TryFrom, str::FromStr};
 use slip44::{Coin, Symbol};
 
-const BITCOIN_ID: u32 = Coin::Bitcoin.id(); // Coin IDs are constant
+const BITCOIN_ID: u32 = Coin::Bitcoin.id(); // Coin ID is constant
 
 fn main() {
     assert_eq!(BITCOIN_ID, 0);
