@@ -18,6 +18,7 @@ struct CoinType {
     name: String,
     original_name: String,
     link: Option<String>,
+    rustdoc_lines: Vec<String>,
 }
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
@@ -53,6 +54,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 name: name.to_string(),
                 original_name: original_name.to_string(),
                 link: link.map(ToString::to_string),
+                rustdoc_lines: vec![],
             })
         })
         .fold(HashMap::<_, CoinType>::new(), |mut acc, coin_type| {
@@ -77,7 +79,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         })
         .into_iter()
         .map(|(_, coin_types)| {
-            if coin_types.len() > 1 {
+            let coin_types = if coin_types.len() > 1 {
                 coin_types
                     .into_iter()
                     .map(|coin_type| CoinType {
@@ -94,7 +96,23 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                     .collect()
             } else {
                 coin_types
-            }
+            };
+
+            coin_types
+                .into_iter()
+                .map(|coin_type| CoinType {
+                    rustdoc_lines: vec![
+                        format!("/// Coin type: {}", coin_type.ids.iter().join(", ")),
+                        if let Some(symbol) = coin_type.symbol.clone() {
+                            format!("/// Symbol: {}", symbol)
+                        } else {
+                            "".to_string()
+                        },
+                        format!("/// Coin: {}", coin_type.original_name),
+                    ],
+                    ..coin_type
+                })
+                .collect::<Vec<_>>()
         })
         .flatten();
 
@@ -116,7 +134,15 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     for coin_type in coin_types.sorted_by_key(|coin_type| coin_type.id) {
         writeln!(
             &mut file,
-            "   ([{}], {}, \"{}\", {}, {}, {}),",
+            "    (
+        {}
+        [{}], {}, \"{}\", {}, {}, {},
+    ),",
+            coin_type
+                .rustdoc_lines
+                .into_iter()
+                .filter(|s| !s.is_empty())
+                .join("\n        ///\n        "),
             coin_type.ids.into_iter().join(",").to_string(),
             coin_type.name,
             coin_type.original_name,
