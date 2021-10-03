@@ -2,7 +2,7 @@
 macro_rules! coins {
     ($((
         $(#[$meta:meta])*
-        [$($id:expr),+],
+        [$id:expr$(,$($ids:expr),+)?],
         $ident:ident,
         $name:expr,
         $($link:expr)?,
@@ -21,7 +21,7 @@ macro_rules! coins {
 
         #[derive(Debug, PartialEq, Copy, Clone)]
         #[allow(non_camel_case_types)]
-        /// Cryptocurrency according to [SLIP-0044](https://github.com/satoshilabs/slips/blob/master/slip-0044.md) spec.
+        /// Coins according to [SLIP-0044](https://github.com/satoshilabs/slips/blob/master/slip-0044.md) spec.
         pub enum Coin {
             $(
                 $(#[$meta])*
@@ -41,25 +41,25 @@ macro_rules! coins {
         }
 
         impl Coin {
-            /// Cryptocurrency ID according to [SLIP-0044](https://github.com/satoshilabs/slips/blob/master/slip-0044.md) spec.
+            /// Coin ID according to [SLIP-0044](https://github.com/satoshilabs/slips/blob/master/slip-0044.md) spec.
             /// ```
             /// use slip44::Coin;
             ///
             /// assert_eq!(Coin::Bitcoin.id(), 0);
             /// ```
-            pub fn id(self) -> u32 { self.ids()[0] }
+            pub const fn id(self) -> u32 { match self { $(Self::$ident => $id, )* } }
 
-            /// Cryptocurrency IDs according to [SLIP-0044](https://github.com/satoshilabs/slips/blob/master/slip-0044.md) spec.
+            /// Coin IDs according to [SLIP-0044](https://github.com/satoshilabs/slips/blob/master/slip-0044.md) spec.
             ///
-            /// Cryptocurrencies may have multiple IDs if both name and symbol identical.
+            /// Coins may have multiple IDs if both name and symbol identical.
             /// ```
             /// use slip44::Coin;
             ///
             /// assert_eq!(Coin::Credits.ids(), vec![334, 498]);
             /// ```
-            pub fn ids(self) -> Vec<u32> { match self { $(Self::$ident => vec![$($id),+], )* } }
+            pub fn ids(self) -> Vec<u32> { match self { $(Self::$ident => vec![$id, $($($ids),+)?], )* } }
 
-            /// Cryptocurrency unedited name according to [SLIP-0044](https://github.com/satoshilabs/slips/blob/master/slip-0044.md) spec.
+            /// Coin unedited name according to [SLIP-0044](https://github.com/satoshilabs/slips/blob/master/slip-0044.md) spec.
             /// ```
             /// use slip44::Coin;
             ///
@@ -67,7 +67,7 @@ macro_rules! coins {
             /// ```
             pub fn name(self) -> String { match self { $(Self::$ident => $name.to_string(), )* } }
 
-            /// Cryptocurrency link extracted from name according to [SLIP-0044](https://github.com/satoshilabs/slips/blob/master/slip-0044.md) spec.
+            /// Coin link extracted from name according to [SLIP-0044](https://github.com/satoshilabs/slips/blob/master/slip-0044.md) spec.
             /// ```
             /// use slip44::Coin;
             ///
@@ -80,13 +80,13 @@ macro_rules! coins {
                 }
             }
 
-            /// Cryptocurrency symbol that's not included into [Symbol] enum due to being a duplicate of another cryptocurrency by symbol name.
+            /// Coin symbol that's not included into [Symbol] enum due to being a duplicate of another coin by symbol name.
             /// ```
             /// use slip44::Coin;
             ///
             /// assert_eq!(Coin::CPChain.duplicate_symbol(), Some("CPC".to_string()));
             /// ```
-            /// Such conflicts are resolved by taking only first Cryptocurrency (ordered by id) into [Symbol] enum
+            /// Such conflicts are resolved by taking only first coin (ordered by id) into [Symbol] enum
             /// (e.g. both [Coin::CPChain] and [Coin::Capricoin] has symbol "CPC" but only [Coin::Capricoin] is eligible to be linked to [Symbol::CPC] since
             /// ```
             /// use slip44::Coin;
@@ -113,7 +113,7 @@ macro_rules! coins {
             /// ```
             fn try_from(id: u32) -> Result<Self, Self::Error> {
                 match id {
-                    $($($id => Ok(Self::$ident), )+ )*
+                    $($id => Ok(Self::$ident), )*
                     _ => slip44_error!("unknown coin type")
                 }
             }
@@ -151,7 +151,7 @@ macro_rules! coins {
 
         #[derive(Debug, PartialEq, Copy, Clone)]
         #[allow(non_camel_case_types)]
-        /// Cryptocurrency symbol according to [SLIP-0044](https://github.com/satoshilabs/slips/blob/master/slip-0044.md) spec.
+        /// Coin symbol according to [SLIP-0044](https://github.com/satoshilabs/slips/blob/master/slip-0044.md) spec.
         pub enum Symbol { $($($symbol, )?)* }
 
         impl std::fmt::Display for Symbol {
