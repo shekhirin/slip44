@@ -4874,6 +4874,14 @@ coins!(
         [613], Widecoin, "Widecoin", "https://Widecoin.org/", WCN, ,
     ),
     (
+        /// Coin type: 614
+        ///
+        /// Symbol: OPT
+        ///
+        /// Coin: Optimistic Ethereum
+        [614], OptimisticEthereum, "Optimistic Ethereum", "https://www.optimism.io/", OPT, ,
+    ),
+    (
         /// Coin type: 615
         ///
         /// Symbol: PSWAP
@@ -4914,12 +4922,36 @@ coins!(
         [619], DeimosX, "DeimosX", "https://deimosx.org/", DEI, ,
     ),
     (
+        /// Coin type: 620
+        ///
+        /// Symbol: AXL
+        ///
+        /// Coin: Axelar
+        [620], Axelar, "Axelar", "https://axelar.network/", AXL, ,
+    ),
+    (
+        /// Coin type: 624
+        ///
+        /// Symbol: NOBL
+        ///
+        /// Coin: Nobility
+        [624], Nobility, "Nobility", "https://github.com/nobilitysociety/", NOBL, ,
+    ),
+    (
         /// Coin type: 625
         ///
         /// Symbol: EAST
         ///
         /// Coin: Eastcoin
         [625], Eastcoin, "Eastcoin", "http://easthub.io/", EAST, ,
+    ),
+    (
+        /// Coin type: 628
+        ///
+        /// Symbol: LORE
+        ///
+        /// Coin: Gitopia
+        [628], Gitopia, "Gitopia", "https://gitopia.com/", LORE, ,
     ),
     (
         /// Coin type: 639
@@ -5050,6 +5082,14 @@ coins!(
         [700], xDai, "xDai", "https://blockscout.com/poa/dai", XDAI, ,
     ),
     (
+        /// Coin type: 707
+        ///
+        /// Symbol: MCOIN
+        ///
+        /// Coin: Moneta Coin
+        [707], MonetaCoin, "Moneta Coin", "https://moneta.today/monetacoin", MCOIN, ,
+    ),
+    (
         /// Coin type: 711
         ///
         /// Symbol: CHC
@@ -5080,6 +5120,14 @@ coins!(
         ///
         /// Coin: Sinovate
         [715], Sinovate, "Sinovate", "https://sinovate.io", SIN, ,
+    ),
+    (
+        /// Coin type: 716
+        ///
+        /// Symbol: DLN
+        ///
+        /// Coin: Delion
+        [716], Delion, "Delion", "https://delion.online", DLN, ,
     ),
     (
         /// Coin type: 725
@@ -5232,6 +5280,14 @@ coins!(
         ///
         /// Coin: BigchainDB
         [822], BigchainDB, "BigchainDB", "https://github.com/bigchaindb/", BDB, ,
+    ),
+    (
+        /// Coin type: 828
+        ///
+        /// Symbol: CCN
+        ///
+        /// Coin: ComputeCoin
+        [828], ComputeCoin, "ComputeCoin", "https://computecoin.network/", , "CCN",
     ),
     (
         /// Coin type: 831
@@ -5408,6 +5464,14 @@ coins!(
         ///
         /// Coin: Infinitefuture
         [868], Infinitefuture, "Infinitefuture", "https://infinitefuture.top", IF, ,
+    ),
+    (
+        /// Coin type: 880
+        ///
+        /// Symbol: LUM
+        ///
+        /// Coin: Lum Network
+        [880], LumNetwork, "Lum Network", "https://lum.network", LUM, ,
     ),
     (
         /// Coin type: 883
@@ -5664,6 +5728,22 @@ coins!(
         [1010], HuobiECOChain, "Huobi ECO Chain", "https://www.hecochain.com/", HT, ,
     ),
     (
+        /// Coin type: 1011
+        ///
+        /// Symbol: ELV
+        ///
+        /// Coin: Eluvio
+        [1011], Eluvio, "Eluvio", "https://eluv.io/", ELV, ,
+    ),
+    (
+        /// Coin type: 1013
+        ///
+        /// Symbol: BIC
+        ///
+        /// Coin: Beincrypto
+        [1013], Beincrypto, "Beincrypto", "https://beincrypto.org", BIC, ,
+    ),
+    (
         /// Coin type: 1020
         ///
         /// Symbol: EVC
@@ -5870,6 +5950,14 @@ coins!(
         [1642], Newton, "Newton", "https://www.newtonproject.org", NEW, ,
     ),
     (
+        /// Coin type: 1657
+        ///
+        /// Symbol: BTA
+        ///
+        /// Coin: Btachain
+        [1657], Btachain, "Btachain", "https://bitcoinasset.io", , "BTA",
+    ),
+    (
         /// Coin type: 1688
         ///
         /// Symbol: BCX
@@ -5908,6 +5996,14 @@ coins!(
         ///
         /// Coin: JPY Stablecoin
         [1784], JPYStablecoin, "JPY Stablecoin", "https://settlenet.io/", JPYS, ,
+    ),
+    (
+        /// Coin type: 1789
+        ///
+        /// Symbol: VEGA
+        ///
+        /// Coin: Vega Protocol
+        [1789], VegaProtocol, "Vega Protocol", "https://vega.xyz/", VEGA, ,
     ),
     (
         /// Coin type: 1815
@@ -6398,6 +6494,14 @@ coins!(
         [6060], GoChainGO, "GoChain GO", "https://gochain.io/", GO, ,
     ),
     (
+        /// Coin type: 6174
+        ///
+        /// Symbol: MOI
+        ///
+        /// Coin: My Own Internet
+        [6174], MyOwnInternet, "My Own Internet", "https://moi-id.life/", MOI, ,
+    ),
+    (
         /// Coin type: 6666
         ///
         /// Symbol: BPA
@@ -6446,6 +6550,12 @@ coins!(
         [8000], Skycoin, "Skycoin", "https://www.skycoin.net", SKY, ,
     ),
     (
+        /// Coin type: 8080
+        ///
+        /// Coin: DSRV
+        [8080], DSRV, "DSRV", "https://www.dsrvlabs.com/", , ,
+    ),
+    (
         /// Coin type: 8192
         ///
         /// Symbol: PAC
@@ -6476,14 +6586,6 @@ coins!(
         ///
         /// Coin: Chia
         [8444], Chia, "Chia", "https://www.chia.net", , "XCH",
-    ),
-    (
-        /// Coin type: 8520
-        ///
-        /// Symbol: XCR
-        ///
-        /// Coin: ChiaRose
-        [8520], ChiaRose, "ChiaRose", "https://chiarose.com/", XCR, ,
     ),
     (
         /// Coin type: 8888
